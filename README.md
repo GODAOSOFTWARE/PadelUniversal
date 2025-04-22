@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# PadelUniversal 🎾
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**PadelUniversal** — фронтенд-часть интерфейса для платформы падел-турниров.  
+Этот репозиторий посвящён созданию **отдельных форм и UI-компонентов**, которые будут использоваться в рамках внутренних страниц платформы.
 
-## Available Scripts
+## 🎯 Цель
 
-In the project directory, you can run:
+Реализация гибкой системы:
+- форм для бронирования и настройки игр;
+- интерфейсных компонентов, таких как layout-обёртки, sidebar, хедеры;
+- адаптивных контейнеров и элементарных UI-блоков.
 
-### `npm start`
+> ⚠️ В этом репозитории НЕ реализуются:
+> - регистрация/авторизация;
+> - пользовательские кабинеты;
+> - глобальная навигация.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Используемый стек
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React.js** — компоненты и управление состоянием
+- **React Router DOM** — роутинг по страницам
+- **Vanilla CSS** — стили, основанные на макетах из Figma
+- **GitHub** — контроль версий и история изменений
 
-### `npm test`
+## 📂 Архитектура проекта
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── layout/      # Layout-компоненты (Sidebar, PageWrapper, AppLayout)
+│   │   ├── forms/       # Формы: создание игр, турнирные фильтры и т.п.
+│   │   └── ui/          # Базовые переиспользуемые UI элементы
+│   ├── pages/           # Страницы-обёртки под формы
+│   ├── styles/          # Глобальные и модульные стили
+│   ├── App.jsx
+│   └── index.js
+└── public/
+```
 
-### `npm run build`
+## 🧪 Статус
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Layout и Sidebar
+- [x] PageWrapper с адаптивным контейнером
+- [ ] Формы создания частной игры
+- [ ] Общие поля и UI-элементы
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔗 Макеты
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Основываемся на дизайне в [Figma](https://figma.com), учитывая:
+- ширину контейнера 1110px;
+- отступы по 40px (слева и справа);
+- адаптацию под мобильные устройства (375px, 428px и пр.).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
