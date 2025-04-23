@@ -20,56 +20,54 @@
   background-color: var(--page-bg);
   min-height: 100vh;
   padding-top: 40px;
-  padding-right: var(--content-padding);
-  padding-left: var(--sidebar-width);
-  transition: padding-left 0.3s ease;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
 }
 
 /* ==== Состояние: Sidebar свёрнут ==== */
 .page-wrapper.collapsed {
-  padding-left: var(--sidebar-collapsed-width);
+  margin-left: var(--sidebar-collapsed-width);
 }
 
 /* ==== Контейнер для контента внутри .page-wrapper ==== */
 .content-container {
   width: 100%;
   max-width: var(--content-max-width);
-  padding-left: var(--content-padding);
-  padding-right: var(--content-padding);
-  margin-left: 0;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+/* ==== Адаптация: средние экраны (1366px и меньше) ==== */
+@media (max-width: 1366px) {
+  .content-container {
+    max-width: 1000px;
+    padding: 0 var(--content-padding);
+  }
 }
 
 /* ==== Адаптация: планшеты (1024px и меньше) ==== */
 @media (max-width: 1024px) {
-  .page-wrapper {
-    padding-left: var(--sidebar-collapsed-width);
-  }
-  
   .content-container {
-    padding-left: var(--content-padding-mobile);
-    padding-right: var(--content-padding-mobile);
+    max-width: 900px;
+    padding: 0 var(--content-padding-mobile);
   }
 }
 
 /* ==== Адаптация: мобильные устройства (768px и меньше) ==== */
 @media (max-width: 768px) {
   .page-wrapper {
-    padding-left: 0;
-    padding-right: var(--content-padding-mobile);
+    margin-left: 0;
   }
   
   .content-container {
-    padding-left: var(--content-padding-mobile);
-    padding-right: var(--content-padding-mobile);
+    padding: 0 var(--content-padding-mobile);
   }
 }
 
 /* ==== Адаптация: большие экраны (1920px+) ==== */
 @media (min-width: 1920px) {
   .content-container {
-    margin-left: 0;
-    margin-right: auto;
+    max-width: var(--content-max-width);
   }
 }
 
