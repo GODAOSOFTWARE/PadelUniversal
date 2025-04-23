@@ -5,12 +5,19 @@
 
 import React from 'react';
 import AppLayout from '../../../components/layout/AppLayout';
+import CreateGameForm from '../../../components/forms/games/CreateGameForm';
+import './NewGameSetupPage.css';
 
 function NewGameSetupPage() {
   return (
     <AppLayout>
-      <h1>Создание новой игры</h1>
-      <p>Это тестовая страница. Здесь появится форма создания частной игры.</p>
+      <div className="page-header">
+        <button className="back-button">
+          ← Назад к частным играм
+        </button>
+        <h1>Создать игру/Настройки игры</h1>
+      </div>
+      <CreateGameForm />
     </AppLayout>
   );
 }
