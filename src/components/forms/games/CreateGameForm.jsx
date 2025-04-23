@@ -1,5 +1,5 @@
 import React from 'react';
-import './CreateGameForm.css';
+import '../../../styles/forms/CreateGameForm.css';
 
 const gameFormats = [
   { id: 'americano', name: 'Американо', available: true },
