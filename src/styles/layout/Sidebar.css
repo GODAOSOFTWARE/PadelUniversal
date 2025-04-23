@@ -11,7 +11,8 @@
   --sidebar-text: #222;
   --sidebar-text-secondary: #666;
   --sidebar-hover: #f5f5f5;
-  --sidebar-active: #eee;
+  --sidebar-active: #000;
+  --sidebar-active-text: #fff;
 }
 
 /* ==== Контейнер бокового меню ==== */
@@ -111,6 +112,11 @@
 .sidebar-nav li.active {
    background-color: var(--sidebar-active);
    font-weight: bold;
+   color: var(--sidebar-active-text);
+}
+
+.sidebar-nav li.active .label {
+   color: var(--sidebar-active-text);
 }
 
 /* ==== Иконки ==== */

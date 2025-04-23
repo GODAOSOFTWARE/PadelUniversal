@@ -7,7 +7,17 @@
 // ========================================================
 
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../../styles/layout/Sidebar.css';
+
+/**
+ * Определяет, активен ли раздел "Спортивные события"
+ * @param {string} pathname - текущий URL
+ * @returns {boolean}
+ */
+const isEventsSectionActive = (pathname) => {
+  return pathname.includes('/tournaments') || pathname.includes('/games');
+};
 
 /**
  * Sidebar — компонент бокового меню
@@ -17,6 +27,7 @@ import '../../styles/layout/Sidebar.css';
 function Sidebar({ collapsed, onToggle }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,7 +73,7 @@ function Sidebar({ collapsed, onToggle }) {
           <ul>
             {/* === PADEL UNITED === */}
             {!collapsed && <li className="section-title">PADEL UNITED</li>}
-            <li className="active">
+            <li>
               <span className="icon">🏠</span>
               {!collapsed && <span className="label">О направлении</span>}
             </li>
@@ -70,7 +81,7 @@ function Sidebar({ collapsed, onToggle }) {
               <span className="icon">🎮</span>
               {!collapsed && <span className="label">Рейтинги игроков</span>}
             </li>
-            <li>
+            <li className={isEventsSectionActive(pathname) ? 'active' : ''}>
               <span className="icon">🏆</span>
               {!collapsed && <span className="label">Спортивные события</span>}
             </li>
