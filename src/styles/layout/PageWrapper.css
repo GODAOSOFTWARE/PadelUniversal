@@ -1,44 +1,78 @@
 /* ================================================================
    FILE: src/styles/layout/PageWrapper.css
-   DESC: Стилизация рабочей области приложения, адаптив под десктоп
+   DESC: Стилизация рабочей области приложения, адаптив под все устройства
 ================================================================ */
+
+:root {
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+  --page-bg: #f9f9f9;
+  --content-max-width: 1110px;
+  --content-padding: 40px;
+  --content-padding-mobile: 20px;
+}
 
 /* ==== Обёртка страницы, содержит контент справа от Sidebar ==== */
 .page-wrapper {
-  background-color: #f9f9f9;           /* светлый фон всей рабочей зоны */
-  min-height: 100vh;                   /* высота на весь экран */
-  padding-top: 40px;                   /* отступ сверху от шапки */
-  padding-right: 40px;                 /* отступ справа от края экрана */
-  padding-left: 260px;                 /* отступ слева под ширину Sidebar */
-  transition: padding-left 0.3s ease;  /* плавное изменение при сворачивании */
+  background-color: var(--page-bg);
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-right: var(--content-padding);
+  padding-left: var(--sidebar-width);
+  transition: padding-left 0.3s ease;
 }
 
-/* ==== Состояние: Sidebar свёрнут (80px ширина) ==== */
+/* ==== Состояние: Sidebar свёрнут ==== */
 .page-wrapper.collapsed {
-  padding-left: 80px;                 /* поджатый отступ под компактный Sidebar */
+  padding-left: var(--sidebar-collapsed-width);
 }
 
 /* ==== Контейнер для контента внутри .page-wrapper ==== */
 .content-container {
-  width: 100%;                        /* занимает всю доступную ширину */
-  max-width: 1110px;                  /* ограничение по макету (Figma) */
-  padding-left: 40px;                /* отступ от Sidebar */
-  padding-right: 40px;               /* отступ от правого края */
-  margin-left: 0;                    /* прижимаем контент к левому краю */
-  margin-right: auto;                /* оставляем правый отступ как есть */
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+  margin-left: 0;
+  margin-right: auto;
 }
 
-/* ==== Адаптация: на экранах 1920px+ фиксируем контейнер левее ==== */
-@media (min-width: 1920px) {
+/* ==== Адаптация: планшеты (1024px и меньше) ==== */
+@media (max-width: 1024px) {
+  .page-wrapper {
+    padding-left: var(--sidebar-collapsed-width);
+  }
+  
   .content-container {
-    margin-left: 0;                  /* жёстко прижат к левому */
-    margin-right: auto;             /* свободный правый край */
+    padding-left: var(--content-padding-mobile);
+    padding-right: var(--content-padding-mobile);
   }
 }
 
-/* ==== Адаптация: на очень больших экранах не растягивать сильно ==== */
+/* ==== Адаптация: мобильные устройства (768px и меньше) ==== */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding-left: 0;
+    padding-right: var(--content-padding-mobile);
+  }
+  
+  .content-container {
+    padding-left: var(--content-padding-mobile);
+    padding-right: var(--content-padding-mobile);
+  }
+}
+
+/* ==== Адаптация: большие экраны (1920px+) ==== */
+@media (min-width: 1920px) {
+  .content-container {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+/* ==== Адаптация: очень большие экраны (2560px+) ==== */
 @media (min-width: 2560px) {
   .content-container {
-    max-width: 1200px;              /* немного увеличим ширину */
+    max-width: 1200px;
   }
 }

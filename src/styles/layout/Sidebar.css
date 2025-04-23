@@ -3,22 +3,33 @@
    DESCRIPTION: Стили для Sidebar-меню
    ======================================== */
 
+:root {
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+  --sidebar-bg: #fff;
+  --sidebar-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+  --sidebar-text: #222;
+  --sidebar-text-secondary: #666;
+  --sidebar-hover: #f5f5f5;
+  --sidebar-active: #eee;
+}
+
 /* ==== Контейнер бокового меню ==== */
 .sidebar {
    position: fixed;
    top: 0;
    left: 0;
-   width: 260px;
+   width: var(--sidebar-width);
    height: 100vh;
-   background-color: #fff;
-   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
-   transition: width 0.3s ease;
+   background-color: var(--sidebar-bg);
+   box-shadow: var(--sidebar-shadow);
+   transition: all 0.3s ease;
    overflow: hidden;
    z-index: 1000;
 }
 
 .sidebar.collapsed {
-   width: 80px;
+   width: var(--sidebar-collapsed-width);
 }
 
 /* ==== Блок с логотипом и бургером ==== */
@@ -40,14 +51,14 @@
 .logo-title {
    font-size: 20px;
    font-weight: bold;
-   color: #222;
+   color: var(--sidebar-text);
    white-space: nowrap;
 }
 
 .logo-subtitle {
    font-size: 12px;
    font-weight: 400;
-   color: #666;
+   color: var(--sidebar-text-secondary);
    margin-top: 4px;
    white-space: nowrap;
    text-overflow: ellipsis;
@@ -64,7 +75,14 @@
    border: none;
    font-size: 20px;
    cursor: pointer;
-   color: #333;
+   color: var(--sidebar-text);
+   padding: 8px;
+   border-radius: 4px;
+   transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+   background-color: var(--sidebar-hover);
 }
 
 /* ==== Навигация ==== */
@@ -87,11 +105,11 @@
 }
 
 .sidebar-nav li:hover {
-   background-color: #f5f5f5;
+   background-color: var(--sidebar-hover);
 }
 
 .sidebar-nav li.active {
-   background-color: #eee;
+   background-color: var(--sidebar-active);
    font-weight: bold;
 }
 
@@ -99,19 +117,60 @@
 .sidebar-nav .icon {
    font-size: 18px;
    width: 28px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 /* ==== Подписи ==== */
 .sidebar-nav .label {
    font-size: 15px;
-   color: #222;
+   color: var(--sidebar-text);
+   margin-left: 12px;
 }
 
 /* ==== Заголовки секций ==== */
 .section-title {
    font-size: 13px;
    font-weight: bold;
-   color: #999;
+   color: var(--sidebar-text-secondary);
    text-transform: uppercase;
    padding: 16px 20px 4px 20px;
+}
+
+/* ==== Медиа запросы для адаптивности ==== */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: var(--sidebar-collapsed-width);
+  }
+  
+  .sidebar.expanded {
+    width: var(--sidebar-width);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: var(--sidebar-width);
+  }
+  
+  .sidebar.expanded {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .sidebar-overlay.visible {
+    display: block;
+  }
 }
