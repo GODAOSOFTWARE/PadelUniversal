@@ -1,14 +1,14 @@
 // ==============================================
-// FILE: src/pages/games/new/NewGameSetupPage.jsx
-// DESCRIPTION: Тестовая страница для проверки layout'а
+// FILE: src/pages/games/new/Setup.jsx
+// DESCRIPTION: Страница настройки новой игры
 // ==============================================
 
 import React from 'react';
 import AppLayout from '../../../components/layout/AppLayout';
-import CreateGameForm from '../../../components/forms/games/CreateGameForm';
+import Create from '../../../components/forms/games/Create';
 import '../../../styles/pages/NewGameSetupPage.css';
 
-function NewGameSetupPage() {
+function Setup() {
   return (
     <AppLayout>
       <div className="page-header">
@@ -17,9 +17,9 @@ function NewGameSetupPage() {
         </button>
         <h1>Создать игру/Настройки игры</h1>
       </div>
-      <CreateGameForm />
+      <Create />
     </AppLayout>
   );
 }
 
-export default NewGameSetupPage;
+export default Setup; 

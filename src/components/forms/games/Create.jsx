@@ -2,8 +2,7 @@ import React from 'react';
 import Input from '../../ui/Input';
 import Select from '../../ui/Select';
 import Button from '../../ui/Button';
-import FieldGroup from '../../ui/FieldGroup';
-import '../../../styles/forms/CreateGameForm.css';
+import '../../../styles/forms/games/Create.css';
 
 const gameFormats = [
   { id: 'americano', name: 'Американо', available: true },
@@ -24,75 +23,94 @@ const scoreLimits = [...[16, 21, 25].map(score => ({
   label: `Счет до ${score} очков`
 })), { value: 'unlimited', label: 'Без ограничений' }];
 
-const clubs = ['Padel Uktus'];
-const courtCounts = [1, 2, 3];
+const clubs = ['Padel Uktus'].map(club => ({
+  value: club,
+  label: club
+}));
 
-function CreateGameForm() {
+const courtCounts = [1, 2, 3].map(count => ({
+  value: count,
+  label: String(count)
+}));
+
+function Create() {
   return (
     <form className="create-game-form">
       <div className="form-section">
         <h3>Создайте название и формат</h3>
         <div className="form-row">
-          <FieldGroup label="Название игры">
+          <div className="form-group">
+            <label>Название игры</label>
             <Input 
               placeholder="Введите название игры"
             />
-          </FieldGroup>
-          <FieldGroup label="Формат игры">
+          </div>
+          <div className="form-group">
+            <label>Формат игры</label>
             <Select
-              options={gameFormats}
               placeholder="Выберите формат игры"
+              options={gameFormats.map(format => ({
+                value: format.id,
+                label: format.name,
+                disabled: !format.available
+              }))}
             />
-          </FieldGroup>
+          </div>
         </div>
       </div>
 
       <div className="form-section">
         <h3>Установите ограничения</h3>
         <div className="form-row">
-          <FieldGroup label="Ограничение по игрокам">
+          <div className="form-group">
+            <label>Ограничение по игрокам</label>
             <Select
               options={playerLimits}
             />
-          </FieldGroup>
-          <FieldGroup label="Ограничение по очкам">
+          </div>
+          <div className="form-group">
+            <label>Ограничение по очкам</label>
             <Select
               options={scoreLimits}
             />
-          </FieldGroup>
+          </div>
         </div>
       </div>
 
       <div className="form-section">
         <h3>Заполните данные об игре</h3>
         <div className="form-row">
-          <FieldGroup label="Спортивный клуб">
+          <div className="form-group">
+            <label>Спортивный клуб</label>
             <Select
               options={clubs}
             />
-          </FieldGroup>
-          <FieldGroup label="Количество кортов">
+          </div>
+          <div className="form-group">
+            <label>Количество кортов</label>
             <Select
               options={courtCounts}
             />
-          </FieldGroup>
+          </div>
         </div>
         <div className="form-row">
-          <FieldGroup label="Начало">
+          <div className="form-group">
+            <label>Начало</label>
             <Input 
               type="datetime-local"
             />
-          </FieldGroup>
-          <FieldGroup label="Конец">
+          </div>
+          <div className="form-group">
+            <label>Конец</label>
             <Input 
               type="datetime-local"
             />
-          </FieldGroup>
+          </div>
         </div>
       </div>
 
       <div className="form-actions">
-        <Button type="submit">
+        <Button variant="primary">
           Создать таблицу игроков
         </Button>
       </div>
@@ -100,4 +118,4 @@ function CreateGameForm() {
   );
 }
 
-export default CreateGameForm;
+export default Create; 
