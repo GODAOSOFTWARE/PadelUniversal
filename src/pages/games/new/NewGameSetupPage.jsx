@@ -1,12 +1,12 @@
 // ==============================================
 // FILE: src/pages/games/new/NewGameSetupPage.jsx
-// DESCRIPTION: Тестовая страница для проверки layout’а
+// DESCRIPTION: Тестовая страница для проверки layout'а
 // ==============================================
 
 import React from 'react';
 import AppLayout from '../../../components/layout/AppLayout';
 import CreateGameForm from '../../../components/forms/games/CreateGameForm';
-import './NewGameSetupPage.css';
+import '../../../styles/pages/NewGameSetupPage.css';
 
 function NewGameSetupPage() {
   return (
