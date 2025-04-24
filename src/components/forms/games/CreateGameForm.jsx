@@ -1,4 +1,8 @@
 import React from 'react';
+import Input from '../../ui/Input';
+import Select from '../../ui/Select';
+import Button from '../../ui/Button';
+import FieldGroup from '../../ui/FieldGroup';
 import '../../../styles/forms/CreateGameForm.css';
 
 const gameFormats = [
@@ -10,12 +14,18 @@ const gameFormats = [
   { id: 'special', name: 'Специальный', available: false },
 ];
 
-const playerLimits = [4, 8, 12, 16, 20];
-const scoreLimits = [16, 21, 25, 'Без ограничений'];
-const clubs = [
-  'Padel Uktus',
-];
-const courtCounts = [1, 2, 3,];
+const playerLimits = [4, 8, 12, 16, 20].map(limit => ({
+  value: limit,
+  label: `${limit} игроков`
+}));
+
+const scoreLimits = [...[16, 21, 25].map(score => ({
+  value: score,
+  label: `Счет до ${score} очков`
+})), { value: 'unlimited', label: 'Без ограничений' }];
+
+const clubs = ['Padel Uktus'];
+const courtCounts = [1, 2, 3];
 
 function CreateGameForm() {
   return (
@@ -23,105 +33,68 @@ function CreateGameForm() {
       <div className="form-section">
         <h3>Создайте название и формат</h3>
         <div className="form-row">
-          <div className="form-group">
-            <label>Название игры</label>
-            <input 
-              type="text" 
+          <FieldGroup label="Название игры">
+            <Input 
               placeholder="Введите название игры"
-              className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <label>Формат игры</label>
-            <select className="form-control">
-              <option value="">Выберите формат игры</option>
-              {gameFormats.map(format => (
-                <option
-                  key={format.id}
-                  value={format.id}
-                  disabled={!format.available}
-                  className={format.available ? 'option-available' : 'option-disabled'}
-                >
-                  {format.name} {!format.available && '(недоступно)'}
-                </option>
-              ))}
-            </select>
-          </div>
+          </FieldGroup>
+          <FieldGroup label="Формат игры">
+            <Select
+              options={gameFormats}
+              placeholder="Выберите формат игры"
+            />
+          </FieldGroup>
         </div>
       </div>
 
       <div className="form-section">
         <h3>Установите ограничения</h3>
         <div className="form-row">
-          <div className="form-group">
-            <label>Ограничение по игрокам</label>
-            <select className="form-control">
-              {playerLimits.map(limit => (
-                <option key={limit} value={limit}>
-                  {limit} игроков
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Ограничение по очкам</label>
-            <select className="form-control">
-              {scoreLimits.map(score => (
-                <option key={score} value={score}>
-                  Счет до {score} очков
-                </option>
-              ))}
-            </select>
-          </div>
+          <FieldGroup label="Ограничение по игрокам">
+            <Select
+              options={playerLimits}
+            />
+          </FieldGroup>
+          <FieldGroup label="Ограничение по очкам">
+            <Select
+              options={scoreLimits}
+            />
+          </FieldGroup>
         </div>
       </div>
 
       <div className="form-section">
         <h3>Заполните данные об игре</h3>
         <div className="form-row">
-          <div className="form-group">
-            <label>Спортивный клуб</label>
-            <select className="form-control">
-              {clubs.map(club => (
-                <option key={club} value={club}>
-                  {club}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Количество кортов</label>
-            <select className="form-control">
-              {courtCounts.map(count => (
-                <option key={count} value={count}>
-                  {count}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FieldGroup label="Спортивный клуб">
+            <Select
+              options={clubs}
+            />
+          </FieldGroup>
+          <FieldGroup label="Количество кортов">
+            <Select
+              options={courtCounts}
+            />
+          </FieldGroup>
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label>Начало</label>
-            <input 
-              type="datetime-local" 
-              className="form-control"
+          <FieldGroup label="Начало">
+            <Input 
+              type="datetime-local"
             />
-          </div>
-          <div className="form-group">
-            <label>Конец</label>
-            <input 
-              type="datetime-local" 
-              className="form-control"
+          </FieldGroup>
+          <FieldGroup label="Конец">
+            <Input 
+              type="datetime-local"
             />
-          </div>
+          </FieldGroup>
         </div>
       </div>
 
       <div className="form-actions">
-        <button type="submit" className="btn-primary">
+        <Button type="submit">
           Создать таблицу игроков
-        </button>
+        </Button>
       </div>
     </form>
   );
