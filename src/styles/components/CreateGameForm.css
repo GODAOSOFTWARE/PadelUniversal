@@ -1,0 +1,46 @@
+.create-game-form {
+  /* Existing styles */
+}
+
+.form-title {
+  /* Existing styles */
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+.form-subtitle {
+  /* Existing styles */
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+}
+
+.form-label {
+  /* Existing styles */
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.form-input {
+  /* Existing styles */
+  font-size: var(--fs-base);
+}
+
+.form-helper-text {
+  /* Existing styles */
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+}
+
+.form-error {
+  /* Existing styles */
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+}
+
+.form-button {
+  /* Existing styles */
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+} 

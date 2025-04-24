@@ -3,207 +3,163 @@
    DESCRIPTION: Стили для Sidebar-меню
    ======================================== */
 
+/* Базовые переменные */
 :root {
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 80px;
-  --sidebar-bg: #fff;
-  --sidebar-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
-  --sidebar-text: #222;
-  --sidebar-text-secondary: #666;
-  --sidebar-hover: #f5f5f5;
-  --sidebar-active: #000;
-  --sidebar-active-text: #fff;
 }
 
-/* ==== Контейнер бокового меню ==== */
+/* Базовые стили */
 .sidebar {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: var(--sidebar-width);
-   height: 100vh;
-   background-color: var(--sidebar-bg);
-   box-shadow: var(--sidebar-shadow);
-   transition: all 0.3s ease;
-   overflow: hidden;
-   z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #000;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .sidebar.collapsed {
-   width: var(--sidebar-collapsed-width);
+  width: 80px;
 }
 
-/* ==== Блок с логотипом и бургером ==== */
+/* Шапка */
 .sidebar-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   padding: 20px 16px 10px 20px;
+  padding: 24px;
+  flex: 0 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000;
 }
 
-/* ==== Логотип ==== */
 .sidebar-brand {
-   display: flex;
-   flex-direction: column;
-   line-height: 1.2;
-   max-width: 160px;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-title {
-   font-size: 20px;
-   font-weight: bold;
-   color: var(--sidebar-text);
-   white-space: nowrap;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
 }
 
 .logo-subtitle {
-   font-size: 12px;
-   font-weight: 400;
-   color: var(--sidebar-text-secondary);
-   margin-top: 4px;
-   white-space: nowrap;
-   text-overflow: ellipsis;
-   overflow: hidden;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ==== Кнопка бургер ==== */
-.sidebar-toggle {
-   padding-top: 6px;
+/* Бургер кнопка */
+.burger-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
 }
 
-.toggle-btn {
-   background: none;
-   border: none;
-   font-size: 20px;
-   cursor: pointer;
-   color: var(--sidebar-text);
-   padding: 8px;
-   border-radius: 4px;
-   transition: background-color 0.2s ease;
+.burger-button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.toggle-btn:hover {
-   background-color: var(--sidebar-hover);
+.burger-button svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
 }
 
-/* ==== Навигация ==== */
+/* Навигация */
 .sidebar-nav {
-   margin-top: 20px;
+  flex: 1 1 auto;
+  padding: 16px 0;
+  background: #000;
 }
 
 .sidebar-nav ul {
-   list-style: none;
-   padding: 0;
-   margin: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.sidebar-nav li {
-   display: flex;
-   align-items: center;
-   padding: 12px 20px;
-   cursor: pointer;
-   transition: background 0.2s ease;
+/* Секции меню */
+.menu-section {
+  margin-bottom: 24px;
 }
 
-.sidebar-nav li:hover {
-   background-color: var(--sidebar-hover);
+.menu-section:last-child {
+  margin-bottom: 0;
 }
 
-.sidebar-nav li.active {
-   background-color: var(--sidebar-active);
-   font-weight: bold;
-   color: var(--sidebar-active-text);
+.menu-section-title {
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.sidebar-nav li.active .label {
-   color: var(--sidebar-active-text);
+/* Пункты меню */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+  color: #fff;
 }
 
-/* ==== Иконки ==== */
-.sidebar-nav .icon {
-   font-size: 18px;
-   width: 28px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* ==== Подписи ==== */
-.sidebar-nav .label {
-   font-size: 15px;
-   color: var(--sidebar-text);
-   margin-left: 12px;
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
-/* ==== Заголовки секций ==== */
-.section-title {
-   font-size: 13px;
-   font-weight: bold;
-   color: var(--sidebar-text-secondary);
-   text-transform: uppercase;
-   padding: 16px 20px 4px 20px;
+/* Иконки */
+.menu-item .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  font-size: 20px;
 }
 
-/* ==== Медиа запросы для адаптивности ==== */
+/* Текст */
+.menu-item .label {
+  margin-left: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Планшеты и мобильные */
 @media (max-width: 1024px) {
   .sidebar {
-    width: var(--sidebar-collapsed-width);
-  }
-  
-  .sidebar.expanded {
-    width: var(--sidebar-width);
-  }
-
-  .sidebar .label,
-  .sidebar .section-title,
-  .sidebar .sidebar-brand {
     display: none;
-  }
-
-  .sidebar.expanded .label,
-  .sidebar.expanded .section-title,
-  .sidebar.expanded .sidebar-brand {
-    display: block;
-  }
-
-  .sidebar-nav li {
-    justify-content: center;
-  }
-
-  .sidebar.expanded .sidebar-nav li {
-    justify-content: flex-start;
-  }
-
-  .sidebar .icon {
-    margin: 0;
-  }
-
-  .sidebar.expanded .icon {
-    margin-right: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: var(--sidebar-collapsed-width);
-  }
-  
-  .sidebar.expanded {
-    width: var(--sidebar-width);
-  }
-  
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .sidebar-overlay.visible {
-    display: block;
   }
 }

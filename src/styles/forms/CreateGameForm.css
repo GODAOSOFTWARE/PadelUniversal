@@ -15,7 +15,7 @@
 /* ==== Форма с растягиванием на всю ширину ==== */
 .create-game-form {
   width: 100%;                /* Растягиваем на всю ширину контейнера */
-  margin-top: 20px;           /* Уменьшаем отступ сверху */
+  margin-top: 40px;           /* Отступ сверху */
 }
 
 /* ==== Секции формы с карточным дизайном ==== */
@@ -23,16 +23,16 @@
   width: 100%;                /* Растягиваем на всю ширину */
   background: #fff;           /* Белый фон для секций */
   border-radius: 8px;         /* Скругление углов */
-  padding: 20px;              /* Внутренние отступы */
-  margin-bottom: 16px;        /* Уменьшаем отступ между секциями */
+  padding: 24px;              /* Внутренние отступы */
+  margin-bottom: 40px;        /* Отступ между секциями */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Лёгкая тень для объема */
   box-sizing: border-box;     /* Учитываем padding в общей ширине */
 }
 
 /* ==== Заголовки секций ==== */
 .form-section h3 {
-  margin: 0 0 16px;          /* Уменьшаем отступ снизу от заголовка */
-  font-size: 18px;           /* Уменьшаем размер шрифта */
+  margin: 0 0 24px;          /* Отступ снизу от заголовка */
+  font-size: 18px;           /* Размер шрифта */
   color: #333;               /* Тёмно-серый цвет текста */
   font-weight: bold;         /* Жирное начертание */
 }
@@ -91,6 +91,36 @@ select.form-control {
   background-position: right 16px center;  /* Позиция стрелки */
   background-size: 1em;    /* Размер стрелки */
   padding-right: 40px;     /* Отступ для стрелки */
+  cursor: pointer;         /* Курсор-указатель */
+}
+
+/* Стили для открытого селекта */
+select.form-control:focus {
+  border: none;
+  outline: none;
+  background-color: #EFEFEF;
+}
+
+/* Стили для опций */
+select.form-control option {
+  padding: 12px;
+  background-color: white;
+  color: #333;
+}
+
+/* Стили для disabled опций */
+select.form-control option:disabled {
+  color: #999;
+  background-color: #f5f5f5;
+  font-style: italic;
+}
+
+/* Специальные стили для iOS */
+@supports (-webkit-touch-callout: none) {
+  select.form-control {
+    padding-right: 25px;
+    background-image: none;
+  }
 }
 
 /* ==== Стили для доступных опций ==== */
@@ -110,7 +140,7 @@ select.form-control {
 .form-actions {
   display: flex;           /* Flex для позиционирования */
   justify-content: flex-start;  /* Выравнивание по левому краю */
-  margin-top: 30px;       /* Отступ сверху */
+  margin-top: 40px;       /* Отступ сверху */
 }
 
 /* ==== Основная кнопка ==== */
@@ -191,29 +221,45 @@ input[type="datetime-local"] {
 /* ==== Адаптивность для планшетов ==== */
 @media (max-width: 1024px) {
   .form-row {
-    flex-direction: column;  
-    gap: 16px;
+    flex-direction: row;  /* Возвращаем строчное расположение */
+    gap: 20px;
   }
 
   .form-section {
-    padding: 20px;
+    padding: 24px;
   }
 
+  .form-group {
+    flex: 1;
+    max-width: calc(50% - 10px); /* Возвращаем ширину как на десктопе */
+  }
+
+  /* Кнопка */
   .btn-primary {
     width: 100%;
     max-width: 400px;
     height: 56px;
+  }
+
+  /* Убираем ограничение ширины для одиночной группы */
+  .form-row .form-group:only-child {
+    max-width: 100%;
   }
 }
 
 /* ==== Адаптивность для мобильных устройств ==== */
 @media (max-width: 768px) {
   .form-row {
+    flex-direction: column;  /* На мобильных - колонка */
     gap: 16px;
   }
   
   .form-section {
     padding: 16px;
+  }
+
+  .form-group {
+    max-width: 100%; /* На всю ширину */
   }
 
   .btn-primary {
