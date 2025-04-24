@@ -1,0 +1,89 @@
+// Мобильные устройства (Small)
+$mobile-small: 320px;  // iPhone SE
+$mobile-medium: 375px; // iPhone X/XS
+$mobile-large: 393px;  // Pixel 5
+
+// Планшеты (Medium)
+$tablet-small: 768px;  // iPad
+$tablet-medium: 834px; // iPad Pro 11"
+$tablet-large: 1024px; // iPad Pro 12.9"
+
+// Десктопы (Large)
+$desktop-small: 1280px;  // Laptop
+$desktop-medium: 1440px; // Laptop HiDPI
+$desktop-large: 1920px;  // Desktop
+
+// Миксины для медиа-запросов
+@mixin mobile-small {
+  @media (min-width: $mobile-small) {
+    @content;
+  }
+}
+
+@mixin mobile-medium {
+  @media (min-width: $mobile-medium) {
+    @content;
+  }
+}
+
+@mixin mobile-large {
+  @media (min-width: $mobile-large) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @media (min-width: $tablet-small) {
+    @content;
+  }
+}
+
+@mixin tablet-medium {
+  @media (min-width: $tablet-medium) {
+    @content;
+  }
+}
+
+@mixin tablet-large {
+  @media (min-width: $tablet-large) {
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @media (min-width: $desktop-small) {
+    @content;
+  }
+}
+
+@mixin desktop-medium {
+  @media (min-width: $desktop-medium) {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media (min-width: $desktop-large) {
+    @content;
+  }
+}
+
+// Пример использования:
+/*
+.my-component {
+  // Базовые стили для мобильных
+  width: 100%;
+  
+  @include mobile-medium {
+    // Стили для iPhone X/XS и больше
+  }
+  
+  @include tablet-small {
+    // Стили для iPad и больше
+  }
+  
+  @include desktop-small {
+    // Стили для ноутбуков и больше
+  }
+}
+*/ 

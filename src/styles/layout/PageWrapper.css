@@ -10,8 +10,8 @@
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 80px;
   --page-bg: #f9f9f9;
-  --content-max-width: 1110px;
-  --content-padding: 40px;
+  --content-max-width: 1440px;
+  --content-padding: 41px;
   --content-padding-mobile: 20px;
 }
 
@@ -35,12 +35,13 @@
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 0 var(--content-padding);
+  box-sizing: border-box;
 }
 
 /* ==== Адаптация: средние экраны (1366px и меньше) ==== */
 @media (max-width: 1366px) {
   .content-container {
-    max-width: 1000px;
+    max-width: 100%;
     padding: 0 var(--content-padding);
   }
 }
@@ -48,7 +49,7 @@
 /* ==== Адаптация: планшеты (1024px и меньше) ==== */
 @media (max-width: 1024px) {
   .content-container {
-    max-width: 900px;
+    max-width: 100%;
     padding: 0 var(--content-padding-mobile);
   }
 }
@@ -74,6 +75,6 @@
 /* ==== Адаптация: очень большие экраны (2560px+) ==== */
 @media (min-width: 2560px) {
   .content-container {
-    max-width: 1200px;
+    max-width: var(--content-max-width);
   }
 }

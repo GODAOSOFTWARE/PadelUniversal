@@ -9,7 +9,6 @@
 /* ==== Основной контейнер с отступами и фоном ==== */
 .content-wrapper {
   width: 100%;                /* Растягиваем на всю доступную ширину */
-  padding: 20px;              /* Внутренние отступы от краёв */
   background-color: #f5f5f5;  /* Светло-серый фон рабочей области */
 }
 
@@ -52,6 +51,12 @@
 /* ==== Группа формы (label + input) ==== */
 .form-group {
   flex: 1;                  /* Растягиваем на доступное пространство */
+  max-width: calc(50% - 10px); /* Максимальная ширина - половина контейнера минус половина gap */
+}
+
+/* Если группа одна в строке - ограничиваем ширину */
+.form-row .form-group:only-child {
+  max-width: calc(50% - 10px);
 }
 
 /* ==== Лейблы полей ==== */
@@ -66,11 +71,15 @@
 /* ==== Поля ввода и селекты ==== */
 .form-control {
   width: 100%;             /* Растягиваем на всю ширину */
-  padding: 10px;           /* Внутренние отступы */
-  border: 1px solid #ddd;  /* Светлая рамка */
+  padding: 12px 16px;      /* Увеличиваем внутренние отступы */
+  border: none;            /* Убираем рамку */
   border-radius: 4px;      /* Скругление углов */
   font-size: 16px;        /* Размер шрифта */
   font-weight: 500;       /* Начертание medium */
+  background-color: #F5F5F5; /* Серый фон для всех полей */
+  color: #333;            /* Цвет текста */
+  height: 48px;           /* Фиксированная высота для всех полей */
+  box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
 
 /* ==== Кастомизация селектов ==== */
@@ -78,8 +87,9 @@ select.form-control {
   appearance: none;        /* Убираем нативный вид */
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right 10px center;  /* Позиция стрелки */
+  background-position: right 16px center;  /* Позиция стрелки */
   background-size: 1em;    /* Размер стрелки */
+  padding-right: 40px;     /* Отступ для стрелки */
 }
 
 /* ==== Стили для доступных опций ==== */
@@ -125,7 +135,20 @@ select.form-control {
 
 /* ==== Кастомизация полей даты/времени ==== */
 input[type="datetime-local"] {
-  padding-right: 10px;    /* Отступ справа */
+  background-color: #F5F5F5; /* Тот же серый фон */
+  padding: 12px 16px;       /* Те же отступы */
+}
+
+/* Стили для placeholder */
+.form-control::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+/* Стили при фокусе */
+.form-control:focus {
+  outline: none;
+  background-color: #EFEFEF; /* Немного темнее при фокусе */
 }
 
 /* ==== Адаптивность для средних экранов ==== */
