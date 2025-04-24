@@ -5,7 +5,7 @@
 // ================================================
 
 import React from 'react';
-import '../../styles/layout/PageWrapper.css';
+import '../../styles/layout/AppLayout.css';
 
 function PageWrapper({ children, isSidebarCollapsed }) {
   return (
